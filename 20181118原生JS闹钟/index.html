@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Document</title>
+	</head>
+	<body>
+		现在是北京时间：<span id="bj_time"></span><br>
+		<audio src="http://f2.htqyy.com/play7/1666/mp3/11" preload="auto" id="music">
+		</audio>
+		请设定你的闹铃时间：
+		<input type="number" value="23" min="0" max="23" size="1" id="hour">
+		<input type="number" value="00" min="00" max="59" size="1" id="minute">
+		<input type="number" value="00" min="00" max="59" size="1" id="second">
+		<input type="button" value="关闭闹钟" id="close" size="2" />
+
+		<script type="text/javascript">
+			window.onload = function() {
+				var input = document.getElementsByTagName('input');
+				var music = document.getElementById('music');
+				var close = document.getElementById('close');
+				for (var i = 0; i < input.length; i++) {
+					input[i].oninput = function() {
+						hour = document.getElementById('hour').value;
+						minute = document.getElementById('minute').value;
+						second = document.getElementById('second').value;
+					}
+				}
+
+				function showtime() {
+					var time = new Date();
+					var bj_hour = time.getHours();
+					var bj_minute = time.getMinutes();
+					var bj_second = time.getSeconds();
+					var content = document.getElementById("bj_time");
+					content.innerHTML = "" + bj_hour + ":" + bj_minute + ":" + bj_second;
+					var d1 = bj_hour >= hour && bj_minute >= minute && bj_second >= second;
+					var d2 = bj_hour >= hour && bj_minute >= minute;
+					var d3 = bj_hour >= hour;
+					
+					if (d1 && d2 && d3) {
+						if (!music.play()) {
+							music.play();
+						}
+						content.style.color = "red";
+					} else {
+						music.pause();
+						content.style.color = "black";
+					}
+				}
+				showtime();
+				var timer = setInterval(showtime, 1000);
+				close.onclick = function() {
+					hour = 24;
+				}
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,38 @@
+*{
+    margin:0;
+    padding:0;
+}
+body{
+    background-color: #ccc;
+}
+.wrapper{
+    width:100%;
+    margin:0 auto;
+}
+.imgBox{
+    position: relative;
+    top:0;
+    left:0;
+    width:980px;
+    height:400px;
+    margin:50px auto;
+    perspective:980px;
+}
+.wrapper img{
+    width:70px;
+    height:60px;
+    float:left;
+}
+.wrapper .btn{
+    width:100px;
+    height:30px;
+    line-height: 30px;
+    text-align: center;
+    font-size: 16px;
+    color:#6c6c6c;
+    border-radius: 10px;
+    margin:0 auto;
+    padding:5px 5px;
+    cursor:pointer;
+    font-weight:bold;
+}

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+	<head>
+		<meta name="keywords" centent="内容">
+		<meta name="description" centent="描述">
+		<meta charset="utf-8">
+		<link type="img/x-icon" rel="icon" href="img/favicon.ico"/>
+		<title>Document</title>
+		<style type="text/css">
+			*{
+				margin:0;
+				padding:0;
+			}
+			img{
+				display: block;
+			}
+			.leftcon{
+				width:350px;
+				height:350px;
+				margin: 100px 20px 0px 312px;
+				float: left;
+				position:relative;
+				box-shadow:3px 3px 10px 0 #111111;
+			}
+			.leftcon img{
+				width:100%;
+				height:100%;
+			}
+			.leftcon .slide_box{
+				display:none;
+				position:absolute;
+				top:0;
+				left:0;
+				width:175px;
+				height:175px;
+				background:#000;
+				opacity:0.3;
+				cursor:move;
+			}
+			.rightcon{
+				display: none;
+				width:350px;
+				height:350px;
+				margin-top:100px;
+				float:left;
+				overflow:hidden;
+				position:relative;
+			}
+			.rightcon img{
+				width:200%;
+				height:200%;
+				position:absolute;
+				top:0;
+				left:0;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="leftcon" id="left">
+			<img src="img/p.jpg" alt="">
+			<div class="slide_box" id="box"></div>
+		</div>
+		<div class="rightcon" id="right">
+			<img src="img/p.jpg" alt="">
+		</div>
+		<script>
+			var leftone = document.getElementById("left");
+			var rightone = document.getElementById("right");
+			var box = document.getElementById("box");
+			var rimg = rightone.getElementsByTagName("img")[0];
+			function gePosition(e){
+				var e = e||window.event;
+
+				var top = e.clentY - leftone.offsetTop - box.offsetHeight/2;
+				var left = e.clentX - leftone.offsetLeft - box.offsetWidth/2;
+				
+				var maxtop = leftone.offsetHeight - box.offsetHeight;
+				var maxleft = leftone.offsetwidth - box.offsetWidth;
+				
+				var mintop = 0;
+				var minleft = 0;
+				
+				var mvtop;
+				var mvleft;
+				
+				if(top<mintop){
+					box.style.top = mintop + "px";
+					mvtop = mintop;
+				} else if(top>maxtop){
+					box.style.top = maxtop + "px";
+					mvtop = maxtop;
+				} else {
+					box.style.top = top + "px";
+					mvtop = top;
+				}
+				
+				if(left<minleft){
+					box.style.left = minleft + "px";
+					mvleft = minleft;
+				}else if(left>maxleft){
+					box.style.left = maxleft + "px";
+					mvleft = maxleft;
+				}else{
+					box.style.left = left + "px";
+					mvleft = left;
+				}
+				rimg.style.top = -mvtop * 2 + "px";
+				rimg.style.left = -mvleft*2 + "px";
+			}
+			leftone.onmouseenter = function(e){
+				var e = e||window.event;
+				box.style.display = "block";
+				getPosition(e);
+				rightone.style.display = "blcok";
+			}
+			leftone.onmousemove = function(e){
+				var e = e||window.event;
+				getPosition(e);
+			}
+			leftone.onmouseleave = function(e){
+				var e = e||window.event;
+				box.style.display = "none";
+				rightone.style.display = "none";
+			}
+		</script>
+		<script src="js/jquery-2.0.3.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				$('.leftcon').mousemove(function(e){
+					$('.rightcon').show()
+					$('.slide_box').show()
+					var x = e.pageX - $('.leftcon').offset().left - $('.slide_box').width()/2
+					var y = e.pageY - $('.leftcon').offset().top - $('.slide_box').height()/2
+					//最大移动范围
+					var maxX = $('.leftcon').width() - $('.slide_box').width()
+					var maxY = $('.leftcon').height() - $('.slide_box').height()
+					//范围约束
+					if(x<=0){
+						x=0;
+					}else if(x>=maxX){
+						x=maxX;
+					}
+					if(y<=0){
+						y=0;
+					}else if(y>=maxY){
+						y = maxY;
+					}
+					//设置位置
+					$('.slide_box').css({
+						left:x,
+						top:y
+					})
+					//2.放大镜移动max上的图片等比例移动
+					var mvX = x/maxX
+					var mvY = y/maxY
+					$('.rightcon>img').css({
+						left:-mvX * ($('.rightcon>img').width() - $('.rightcon').width()),
+						top:-mvY * ($('.rightcon>img').height() - $('.rightcon').height())
+					})
+				}).mouseout(function(){
+					$('.rightcon').hide()
+					$('.slide_box').hide()
+				})
+			})
+		</script>
+	</body>
+</html>

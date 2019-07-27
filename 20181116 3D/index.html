@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            overflow: hidden;
+            width: 100vw;
+            height: 100vh;
+            background-color: #222;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .world {
+            perspective: 800px;
+            width: 100vh;
+            height: 100vh;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .cube {
+            transform-style: preserve-3d;
+            backface-visibility: hidden;
+            width: 50vh;
+            height: 50vh;
+            position: relative;
+            outline: 0;
+            animation: rotator 4.5s linear infinite;
+        }
+        @keyframes rotator{
+            0%{
+                transform: rotateX(0deg) rotateY(0deg);
+            }
+            100%{
+                transform: rotateX(360deg) rotateY(360deg);
+            }
+        }
+        .cube * {
+            background-color: #000;
+            box-shadow: 0 0 3vh currentColor;
+            transition: background 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+        }
+
+        .cube:hover * {
+            background: currentColor;
+            box-shadow: 0 0 20vh currentColor;
+        }
+
+        .cube .cube_front {
+            color: deeppink;
+            transform: translateZ(25vh);
+            position: absolute;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+        }
+        .cube .cube_right{
+            color:lightcoral;
+            transform: rotateY(90deg) translateZ(25vh);
+            position: absolute;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+        }
+        .cube .cube_left{
+            color:skyblue;
+            transform: rotateY(270deg) translateZ(25vh);
+            position: absolute;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+        }
+        .cube .cube_back {
+            color: seagreen;
+            transform:rotateY(180deg) translateZ(25vh);
+            position: absolute;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+        }
+        .cube .cube_top {
+            color: dodgerblue;
+            transform:rotateX(90deg) translateZ(25vh);
+            position: absolute;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+        }
+        .cube .cube_bottom {
+            color: yellowgreen;
+            transform:rotateX(270deg) translateZ(25vh);
+            position: absolute;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="world">
+        <div class="cube" tabindex="0">
+            <div class="cube_front"></div>
+            <div class="cube_back"></div>
+            <div class="cube_left"></div>
+            <div class="cube_right"></div>
+            <div class="cube_top"></div>
+            <div class="cube_bottom"></div>
+        </div>
+    </div>
+</body>
+
+</html>

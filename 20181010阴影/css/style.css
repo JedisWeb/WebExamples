@@ -1,0 +1,19 @@
+.wrapper{
+	width:400px;
+	position:relative;
+	margin:100px auto;
+	transform-style:preserve-3d;
+	perspective:200px;
+}
+.book{
+	width:400px;
+	height:500px;
+	background-color:#ccc;
+	font-size:30px;
+	text-align:center;
+	line-height:500px;
+	color:#fff;
+	text-shadow:5px 5px 5px rgba(0,0,0,4);
+	box-shadow: 10px 10px 10px#555,
+				5px 5px 5px #555 inset;
+}

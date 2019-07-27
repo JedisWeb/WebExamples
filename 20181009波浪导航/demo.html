@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<link rel="stylesheet" href="css/style.css">
+	<title>Document</title>
+</head>
+
+<body>
+	<div class="sidebar">
+		<ul>
+			<li class="item"><span class="num">1</span>HTML5</li>
+			<li class="item"><span class="num">2</span>SQL</li>
+			<li class="item"><span class="num">3</span>JSP</li>
+			<li class="item"><span class="num">4</span>JAVA</li>
+			<li class="item"><span class="num">5</span>CSS</li>
+			<li class="item"><span class="num">6</span>SPRING</li>
+			<li class="item"><span class="num">7</span>C</li>
+			<li class="item"><span class="num">8</span>VBA</li>
+			<li class="item"><span class="num">9</span>LINUX</li>
+			<li class="item"><span class="num">10</span><span>1</span>ANDROID</li>
+			<li class="item"><span class="num">11</span>PHP</li>
+			<li class="item"><span class="num">12</span>JQUERY</li>
+			<li class="item"><span class="num">13</span>JS</li>
+			<li class="item"><span class="num">14</span>VUE</li>
+		</ul>
+	</div>
+	<script src="js/jquery.js"></script>
+	<script>
+		$(".sidebar").hover(function() {
+			//			$(".item").animate({left:'0px'});
+			$(".item").each(function(i) {
+				setTimeout(function() {
+					$(this).animate({
+						'left': '0'
+					});
+				}.bind(this), i * 50);
+			});
+		}, function() {
+			//			$(".item").animate({left:'104px'});
+			$(".item").each(function(i) {
+				setTimeout(function() {
+					$(this).animate({
+						'left': '104px'
+					});
+				}.bind(this), i * 50);
+			});
+		});
+	</script>
+</body>
+
+</html>

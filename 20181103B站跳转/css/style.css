@@ -1,0 +1,32 @@
+*{
+	margin : 0px;
+	padding : 0px;
+}
+a{
+	text-decoration:none;
+	color: #323232;
+}
+.wra{
+	position: fixed;
+	top: 20px;
+	right:20px;
+	width:50px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+}
+.wra .item{
+	height:40px;
+	line-height:40px;
+	text-align: center;
+	color:#000;
+	font-size: 12px;
+	background-color: ;
+}
+.wra .item:hover{
+	color:#fff;
+	background-color: #00a1d6;
+}
+.wra .item a{
+	display: inline-block;
+	width:50px;
+}
